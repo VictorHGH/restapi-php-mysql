@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../models/Developer.model.php';
 
-class DeveloperService
-{
+class DeveloperService {
 	private static $instance = null;
 
-	public static function getInstance()
-	{
+	public static function getInstance() {
 		if (self::$instance === null) {
 			self::$instance = new self();
 		}
 		return self::$instance;
 	}
 
-	public function listDevelopers(): array
-	{
+	public function listDevelopers(): array {
 		$developers = [];
 
 		$developers[] = new Developer(1, 'Juan', rand(1, 20));

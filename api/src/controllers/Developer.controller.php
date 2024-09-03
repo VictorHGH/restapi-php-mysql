@@ -3,28 +3,24 @@
 require_once __DIR__ . '/../services/Developer.service.php';
 require_once __DIR__ . '/utils/ResponseMethos.php';
 
-class DeveloperController
-{
+class DeveloperController {
 	private $requestMethod;
 	private $developerService;
 
 	private static $instance = null;
 
-	public static function getInstance()
-	{
+	public static function getInstance() {
 		if (self::$instance === null) {
 			self::$instance = new self();
 		}
 		return self::$instance;
 	}
 
-	public function __construct()
-	{
+	public function __construct() {
 		$this->developerService = DeveloperService::getInstance();
 	}
 
-	public function processRequest()
-	{
+	public function processRequest() {
 		$this->requestMethod = $_SERVER['REQUEST_METHOD'];
 
 		if ($this->requestMethod === 'GET') {
@@ -36,15 +32,13 @@ class DeveloperController
 
 	// HTTP Methods cases
 
-	private function getCase()
-	{
+	private function getCase() {
 		$this->listDevelopers();
 	}
 
 	// Private methods
 
-	private function listDevelopers()
-	{
+	private function listDevelopers() {
 		try {
 			$developers = $this->developerService->listDevelopers();
 

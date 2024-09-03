@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-class ResponseMethods
-{
-	public static function printJSON($message, $data = [])
-	{
+class ResponseMethods {
+	public static function printJSON($message, $data = []) {
 		$response = [
 			'status' => 200,
 			'statusText' => self::getHTTPResponseCodes()[200],
@@ -26,8 +24,7 @@ class ResponseMethods
 		print json_encode($response);
 	}
 
-	public static function printError($httpCode = 500, $message = "")
-	{
+	public static function printError($httpCode = 500, $message = "") {
 		http_response_code($httpCode);
 
 		if (isset($message) && (strlen(trim($message)) > 0)) {
@@ -43,8 +40,7 @@ class ResponseMethods
 		]);
 	}
 
-	private static function getHTTPResponseCodes()
-	{
+	private static function getHTTPResponseCodes() {
 		return [
 			200 => 'OK',
 			400 => 'Bad Request',
